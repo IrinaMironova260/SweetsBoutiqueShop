@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Sweets Boutique Shop</string>
+
+    <!--Меню-->
+    <string name="menu_home">Главная</string>
+    <string name="menu_basket">Корзина</string>
+    <string name="menu_favorites">Избранное</string>
+    <string name="menu_account">Профиль</string>
+    <string name="menu_about">О нас</string>
+
+    <!--Каталог-->
+    <string name="catalog_main">Каталог сладких подарков</string>
+    <string name="catalog_OneString">Клубника в шоколаде</string>
+    <string name="catalog_TwoString">Клубника и бананы в шоколаде</string>
+    <string name="catalog_ThreeString">Ягодные букеты</string>
+    <string name="catalog_fourString">Подарочные наборы</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

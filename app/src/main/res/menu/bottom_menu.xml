@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/homeBottomMainMenu"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/home"
+        android:title="@string/menu_home" />
+
+    <item
+        android:id="@+id/coffeeBottomMainMenu"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/basket"
+        android:title="@string/menu_basket" />
+
+    <item
+        android:id="@+id/cardBottomMainMenu"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/favorites"
+        android:title="@string/menu_favorites" />
+
+    <item
+        android:id="@+id/accountBottomMainMenu"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/account"
+        android:title="@string/menu_account" />
+
+    <item
+        android:id="@+id/aboutBottomMainMenu"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/about"
+        android:title="@string/menu_about" />
+</menu>
