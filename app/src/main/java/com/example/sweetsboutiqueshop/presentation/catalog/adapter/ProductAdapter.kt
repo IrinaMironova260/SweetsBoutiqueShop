@@ -1,13 +1,14 @@
 package com.example.sweetsboutiqueshop.presentation.catalog.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sweetsboutiqueshop.data.models.ProductsModel
 import com.example.sweetsboutiqueshop.databinding.ProductItemBinding
 import com.squareup.picasso.Picasso
 
-class ProductAdapter(private var setCategory:(ProductsModel) -> Unit)
+class ProductAdapter(private var startCardProduct:(ProductsModel) -> Unit)
     :  RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
 
     private val productsList = ArrayList<ProductsModel>()
@@ -24,27 +25,25 @@ class ProductAdapter(private var setCategory:(ProductsModel) -> Unit)
     }
 
     override fun onBindViewHolder(holder: ProductHolder, position: Int) {
-        holder.bind(productsList[position], setCategory)
+        holder.bind(productsList[position], startCardProduct)
     }
 
-    fun setList(coffeeList: List<ProductsModel>) {
+    fun setList( products: List<ProductsModel>) {
         productsList.clear()
-        productsList.addAll(coffeeList)
+        productsList.addAll(products)
     }
 
     class ProductHolder(val binding: ProductItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(
-            model: ProductsModel,
-            setCategory: (ProductsModel) -> Unit
+            model: ProductsModel, startCardProduct: (ProductsModel) -> Unit
         ) {
             val getImage = model.mainImage
-
             Picasso.get().load(getImage).into(binding.imageProduct)
             binding.nameProduct.text = model.name
-            binding.categoryProduct.text = "description category"
-            val price = model.price
-            binding.priceProduct.text = price.toString()
+//            binding.categoryProduct.text = "description category"
 
+            val price = model.price
+                        binding.priceProduct.text = price.toString()
             if (model.salePrice != 0) {
                 val salePrice = model.salePrice
                 binding.salePriceProduct.text = "$salePrice руб."
@@ -52,8 +51,10 @@ class ProductAdapter(private var setCategory:(ProductsModel) -> Unit)
                 binding?.salePriceProduct?.text = ""
             }
 
-            setCategory(model)
+            binding.goToCardPrev.setOnClickListener(View.OnClickListener {
+                startCardProduct(model)
+            })
+
         }
     }
-
 }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sweetsboutiqueshop.data.models.ProductsModel
@@ -48,7 +49,7 @@ class Catalog : Fragment() {
     private fun initRecyclerProducts() {
         binding?.recyclerProducts?.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        productAdapter = ProductAdapter({ model: ProductsModel -> setCategory(model) })
+        productAdapter = ProductAdapter({ model: ProductsModel -> startCardProduct(model) })
         binding?.recyclerProducts?.adapter = productAdapter
     }
 
@@ -66,21 +67,29 @@ class Catalog : Fragment() {
         })
     }
 
-    private fun setCategory(model: ProductsModel) {
-        categoriesProductsViewModel.loadCategoryProducts(model.id).observe(
-            viewLifecycleOwner, Observer {
-                var data: List<Int> = it.map { it.categoryId }
+//    private fun setCategory(model: ProductsModel) {
+//        categoriesProductsViewModel.loadCategoryProducts(model.id).observe(
+//            viewLifecycleOwner, Observer {
+//                var data: List<Int> = it.map { it.categoryId }
+//
+//                categoriesViewModel.loadCategoriesProduct(data)
+//                    .observe(viewLifecycleOwner, Observer {
+//
+//                        var getData = it.map { it.name }   //.toMutableList()
+//                        binding?.headerCatalog?.text = getData.toString()
+//
+//                    })
+//            })
+//
+//
+//    }
 
-                categoriesViewModel.loadCategoriesProduct(data)
-                    .observe(viewLifecycleOwner, Observer {
-
-                        var getData = it.map { it.name }   //.toMutableList()
-                        binding?.headerCatalog?.text = getData.toString()
-
-                    })
-            })
-
-
+    private fun startCardProduct(model: ProductsModel) {
+        var bundle = Bundle()
+        bundle.putInt("idProduct", model.id)
+        var card = CardProduct()
+        card.arguments = bundle
+        card.show(childFragmentManager, "cardProduct")
     }
 
 }
