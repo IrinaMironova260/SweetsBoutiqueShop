@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardProduct"
     android:layout_width="wrap_content"
@@ -9,7 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="5dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageProduct"
@@ -27,7 +27,7 @@
             android:textColor="@color/black"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageProduct" />
+            app:layout_constraintTop_toBottomOf="@id/imageProduct" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/priceProduct"
@@ -36,8 +36,7 @@
             android:layout_margin="10dp"
             android:textColor="@color/black"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nameProduct" />
+            app:layout_constraintTop_toBottomOf="@id/nameProduct" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/salePriceProduct"
@@ -45,49 +44,48 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:textColor="@color/black"
-            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/priceProduct" />
+            app:layout_constraintTop_toBottomOf="@id/nameProduct" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/addToBasketPrev"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="5dp"
-            android:src="@drawable/basket_small"
             android:background="@drawable/back_icon_but"
-            app:layout_constraintRight_toLeftOf="@+id/addToFavoritePrev"
-            app:layout_constraintTop_toBottomOf="@+id/priceProduct"/>
+            android:src="@drawable/catalog"
+            app:layout_constraintRight_toLeftOf="@id/addToFavoritesPrev"
+            app:layout_constraintTop_toBottomOf="@id/priceProduct" />
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/addToFavoritePrev"
+            android:id="@+id/addToFavoritesPrev"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="5dp"
-            android:src="@drawable/favorite_small"
             android:background="@drawable/back_icon_but"
-            app:layout_constraintRight_toLeftOf="@+id/addToComparePrev"
-            app:layout_constraintTop_toBottomOf="@+id/priceProduct" />
+            android:src="@drawable/favorite_small"
+            app:layout_constraintRight_toLeftOf="@id/addToComparePrev"
+            app:layout_constraintTop_toBottomOf="@id/priceProduct" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/addToComparePrev"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="5dp"
-            android:src="@drawable/compare_small"
             android:background="@drawable/back_icon_but"
-            app:layout_constraintRight_toLeftOf="@+id/goToCardPrev"
-            app:layout_constraintTop_toBottomOf="@+id/priceProduct" />
+            android:src="@drawable/compare"
+            app:layout_constraintRight_toLeftOf="@id/goToCardProdPrev"
+            app:layout_constraintTop_toBottomOf="@id/priceProduct" />
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/goToCardPrev"
+            android:id="@+id/goToCardProdPrev"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="5dp"
-            android:src="@drawable/info_small"
             android:background="@drawable/back_icon_but"
+            android:src="@drawable/info_small"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/priceProduct" />
+            app:layout_constraintTop_toBottomOf="@id/priceProduct" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

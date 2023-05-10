@@ -7,5 +7,9 @@ interface ProductsDataSourse {
 
     fun insert(productsModel: ProductsModel)
     fun loadAllProduct(): LiveData<List<ProductsModel>>
+    fun loadInfoProduct(idProduct:Int): LiveData<List<ProductsModel>>
     suspend fun clear()
+
+
+
 }

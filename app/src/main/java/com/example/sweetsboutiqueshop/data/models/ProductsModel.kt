@@ -5,7 +5,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "product_data_table")
-
 class ProductsModel  (
 
     @PrimaryKey(autoGenerate = false)

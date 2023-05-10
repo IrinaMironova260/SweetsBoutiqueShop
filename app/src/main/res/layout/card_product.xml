@@ -22,25 +22,28 @@
                 android:layout_weight="1">
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/nameProductCardProduct"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:id="@+id/categoriesProductCardProduct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black" />
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/categoriesProductCardProduct"
-                    app:layout_constraintTop_toBottomOf="@id/nameProductCardProduct"
+                    android:id="@+id/nameProductCardProduct"
+                    app:layout_constraintTop_toBottomOf="@id/categoriesProductCardProduct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
                     android:textColor="@color/black" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerImagesCardProduct"
-                    app:layout_constraintTop_toBottomOf="@id/categoriesProductCardProduct"
+                    app:layout_constraintTop_toBottomOf="@id/nameProductCardProduct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp" />
+                    android:layout_margin="8dp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/priceProductCardProduct"
@@ -48,7 +51,7 @@
                     app:layout_constraintTop_toBottomOf="@id/recyclerImagesCardProduct"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="8dp"
                     android:textColor="@color/black" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -57,114 +60,35 @@
                     app:layout_constraintTop_toBottomOf="@id/recyclerImagesCardProduct"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:textColor="@color/black" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/descriptionProductCardProduct"
-                    app:layout_constraintTop_toBottomOf="@id/salePriceProductCardProduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="8dp"
                     android:textColor="@color/black" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/headerTechniqueCardProduct"
-                    app:layout_constraintTop_toBottomOf="@id/descriptionProductCardProduct"
+                    app:layout_constraintTop_toBottomOf="@id/salePriceProductCardProduct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="8dp"
                     android:text="@string/headerTechnique"
+                    android:textAlignment="center"
                     android:textColor="@color/black" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/processorProductCardProduct"
-                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:id="@+id/descriptionProductCardProduct"
                     app:layout_constraintTop_toBottomOf="@id/headerTechniqueCardProduct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="8dp"
                     android:textColor="@color/black" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/numberOfCoresProductCardProduct"
+                    android:id="@+id/deliveryTime"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/processorProductCardProduct"
+                    app:layout_constraintTop_toBottomOf="@id/descriptionProductCardProduct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:textColor="@color/black" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/processorFrequencyProductCardProduct"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/numberOfCoresProductCardProduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:textColor="@color/black" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/memoryProductCardProduct"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/processorFrequencyProductCardProduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:textColor="@color/black" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/ssdProductCardProduct"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/memoryProductCardProduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:textColor="@color/black" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/diagonalProductCardProduct"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/ssdProductCardProduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:textColor="@color/black" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/permissionProductCardProduct"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/diagonalProductCardProduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:textColor="@color/black" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/mainCameraProductCardProduct"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/permissionProductCardProduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:textColor="@color/black" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/frontFacingCameraProductCardProduct"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/mainCameraProductCardProduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:textColor="@color/black" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/yearProductCardProduct"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/frontFacingCameraProductCardProduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="8dp"
+                    android:layout_marginBottom="16dp"
                     android:textColor="@color/black" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -172,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:background="@color/grey">
+                android:background="@color/pink">
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/addToBasketCardProduct"
@@ -183,7 +107,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:background="@drawable/back_icon_but"
-                    android:src="@drawable/catalog" />
+                    android:src="@drawable/basket_small" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/addToFavoritesCardProduct"
@@ -194,7 +118,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:background="@drawable/back_icon_but"
-                    android:src="@drawable/favorites" />
+                    android:src="@drawable/favorite_small" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/addToCompareCardProduct"

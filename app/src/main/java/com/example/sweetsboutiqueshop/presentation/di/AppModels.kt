@@ -1,22 +1,13 @@
 package com.example.sweetsboutiqueshop.presentation.di
 
 import androidx.room.Room
-import com.example.sweetsboutiqueshop.data.localDB.DBThree
-import com.example.sweetsboutiqueshop.data.localDB.DBTwo
+import com.example.sweetsboutiqueshop.data.localDB.DBFive
 import com.example.sweetsboutiqueshop.data.repository.dataSource.*
 import com.example.sweetsboutiqueshop.data.repository.dataSourceIMPL.*
-import com.example.sweetsboutiqueshop.data.repository.repository.CategoriesProductsRepository
-import com.example.sweetsboutiqueshop.data.repository.repository.CategoriesRepository
-import com.example.sweetsboutiqueshop.data.repository.repository.ProductsRepository
-import com.example.sweetsboutiqueshop.domain.repository.CategoriesProductsCall
-import com.example.sweetsboutiqueshop.domain.repository.CategoryCall
-import com.example.sweetsboutiqueshop.domain.repository.ProductsCall
-import com.example.sweetsboutiqueshop.domain.useCase.CategoriesProductsUseCase
-import com.example.sweetsboutiqueshop.domain.useCase.CategoriesUseCase
-import com.example.sweetsboutiqueshop.domain.useCase.ProductsUseCase
-import com.example.sweetsboutiqueshop.presentation.catalog.viewModels.CategoriesProductsViewModel
-import com.example.sweetsboutiqueshop.presentation.catalog.viewModels.CategoriesViewModel
-import com.example.sweetsboutiqueshop.presentation.catalog.viewModels.ProductsViewModel
+import com.example.sweetsboutiqueshop.data.repository.repository.*
+import com.example.sweetsboutiqueshop.domain.repository.*
+import com.example.sweetsboutiqueshop.domain.useCase.*
+import com.example.sweetsboutiqueshop.presentation.catalog.viewModels.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -27,12 +18,12 @@ val moduleCategories = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DBThree::class.java,
-            "localDBThreeCat"
+            DBFive::class.java,
+            "localDBFiveCat"
         ).build()
     }
 
-    single { get<DBThree>().categoriesDao }
+    single { get<DBFive>().categoriesDao }
 
     single<CategoriesDataSourse> {
         CategoriesDataSourseIMPL(get())
@@ -54,12 +45,12 @@ val moduleProducts = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DBThree::class.java,
-            "localDBThreeProd"
+            DBFive::class.java,
+            "localDBFiveProd"
         ).build()
     }
 
-    single { get<DBThree>().priductsDao }
+    single { get<DBFive>().priductsDao }
 
 
     single<ProductsDataSourse> {
@@ -81,12 +72,12 @@ val moduleCategoriesProducts = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DBThree::class.java,
-            "localDBThreeProd"
+            DBFive::class.java,
+            "localDBFiveProd"
         ).build()
     }
 
-    single { get<DBThree>().categoriesProductsDao}
+    single { get<DBFive>().categoriesProductsDao}
 
 
     single<CategoriesProductsDataSource> {
@@ -102,3 +93,82 @@ val moduleCategoriesProducts = module {
     viewModel { CategoriesProductsViewModel(get()) }
 
 }
+
+val moduleImageProducts = module {
+
+    single {
+        Room.databaseBuilder(
+            androidContext(),
+            DBFive::class.java,
+            "localDBFiveImageProduct"
+        ).build()
+    }
+
+    single { get<DBFive>().imagesProductsDao}
+
+    single<ImageProductDataSource> {
+        ImageProductDataSourceIMPL(get())
+    }
+
+    single<ImageProductApiDataSource> {
+        ImageProductApiDataSourceIMPL(get())
+    }
+
+    single<ImageProductCall> { ImageProductRepositopy (get(), get()) }
+
+    single { ImageProductUseCase (get()) }
+
+    viewModel { ImageProductViewModel (get()) }
+
+}
+
+val moduleImages = module {
+
+    single {
+        Room.databaseBuilder(
+            androidContext(),
+            DBFive::class.java,
+            "localDBFiveImage"
+        ).build()
+    }
+
+    single { get<DBFive>().imagesDao}
+
+    single<ImagesDataSouce> {
+        ImagesDataSouceIMPL(get())
+    }
+
+    single<ImagesApiDataSouce> {
+        ImagesApiDataSouceIMPL(get())
+    }
+
+    single<ImagesCall> { ImageRepository (get(), get()) }
+
+    single { ImageUseCase (get()) }
+
+    viewModel { ImagesViewModel (get()) }
+
+}
+
+val moduleBasket = module {
+
+    single {
+        Room.databaseBuilder(
+            androidContext(),
+            DBFive::class.java,
+            "localDBFiveBasket"
+        ).build()
+    }
+
+    single { get<DBFive>().basketDao}
+
+    single<BasketDataSouce> {
+        BasketDataSouceIMPL(get())
+    }
+
+    single<BasketCall> { BasketRepository (get()) }
+    single { BasketUseCase (get()) }
+    viewModel { BasketViewModel (get()) }
+
+}
+

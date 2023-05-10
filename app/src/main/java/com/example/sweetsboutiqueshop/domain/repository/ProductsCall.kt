@@ -6,5 +6,6 @@ import com.example.sweetsboutiqueshop.data.models.ProductsModel
 
 interface ProductsCall {
     fun loadProducts(): LiveData<List<ProductsModel>>
+    fun loadInfoProduct(idProduct: Int): LiveData<List<ProductsModel>>
     suspend fun startMigration(context: Context)
 }

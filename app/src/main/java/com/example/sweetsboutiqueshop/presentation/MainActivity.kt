@@ -7,9 +7,7 @@ import com.example.sweetsboutiqueshop.R
 import com.example.sweetsboutiqueshop.databinding.ActivityMainBinding
 import com.example.sweetsboutiqueshop.presentation.basket.Basket
 import com.example.sweetsboutiqueshop.presentation.catalog.Catalog
-import com.example.sweetsboutiqueshop.presentation.catalog.viewModels.CategoriesProductsViewModel
-import com.example.sweetsboutiqueshop.presentation.catalog.viewModels.CategoriesViewModel
-import com.example.sweetsboutiqueshop.presentation.catalog.viewModels.ProductsViewModel
+import com.example.sweetsboutiqueshop.presentation.catalog.viewModels.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +15,8 @@ class MainActivity : AppCompatActivity() {
     val categoriesViewModel: CategoriesViewModel by viewModel()
     val productsViewModel: ProductsViewModel by viewModel()
     val categoriesProductsViewModel: CategoriesProductsViewModel by viewModel()
+    val imagesProductsViewModel: ImageProductViewModel by viewModel()
+    val imagesViewModel: ImagesViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         categoriesViewModel.migration(this)
         productsViewModel.migration(this)
         categoriesProductsViewModel.migration(this)
+        imagesProductsViewModel.migration(this)
+        imagesViewModel.migration(this)
 
         supportFragmentManager.beginTransaction().replace(R.id.mainContent, Catalog()).commit()
 
@@ -35,14 +37,16 @@ class MainActivity : AppCompatActivity() {
                     .replace(R.id.mainContent, Catalog()).commit()
                 R.id.coffeeBottomMainMenu -> supportFragmentManager.beginTransaction()
                     .replace(R.id.mainContent, Basket()).commit()
-//                R.id.cardBottomMainMenu -> supportFragmentManager.beginTransaction()
+//              R.id.cardBottomMainMenu -> supportFragmentManager.beginTransaction()
 //                    .replace(R.id.mainContent, Card()).commit()
-//                R.id.accountBottomMainMenu -> supportFragmentManager.beginTransaction()
+//              R.id.accountBottomMainMenu -> supportFragmentManager.beginTransaction()
 //                    .replace(R.id.mainContent, Account()).commit()
             }
             return@setOnItemSelectedListener true
 
         }
-//        binding?.bottomNav?.selectedItemId = R.id.homeBottomMainMenu
+        binding?.bottomNav?.selectedItemId = R.id.homeBottomMainMenu
     }
+
+
 }

@@ -8,7 +8,7 @@
     <string name="menu_account">Профиль</string>
     <string name="menu_about">О нас</string>
 
-    <!--Каталог-->
+    <!--Каталог категорий товаров-->
     <string name="catalog_main">Каталог сладких подарков</string>
     <string name="catalog_OneString">Клубника в шоколаде</string>
     <string name="catalog_TwoString">Клубника и бананы в шоколаде</string>
@@ -18,19 +18,14 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!--Корзина-->
+    <string name="basket">Корзина</string>
+    <string name="clearBasket">Очистить корзину </string>
     <string name="compare">Сравнение</string>
-    <string name="currency"> Рублей.</string>
-    <string name="headerTechnique">Описание товара</string>
-    <string name="headerTechniqueProcessor">Процессор: </string>
-    <string name="headerNumberOfCores">Кол-во ядер: </string>
-    <string name="headerProcessorFrequency">Частота Процессора: </string>
-    <string name="headerMemory">Оперативная Память: </string>
-    <string name="headerSSD">SSD: </string>
-    <string name="headerDiagonal">Диагональ: </string>
-    <string name="headerPermission">Разрешение: </string>
-    <string name="headerMainCamera">Основная Камера: </string>
-    <string name="headerFrontFacingCamera">Фронтальная Камера: </string>
-    <string name="headerYear">Год Выпуска: </string>
-    <string name="clearBasket">Очистить Корзину </string>
+    <string name="currency"> рублей</string>
+    <string name="headerTechnique">Описание товара </string>
+    <string name="deliveryTime">Время доставки: </string>
+    <string name="order">Сделать заказ</string>
+
 
 </resources>

@@ -11,9 +11,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ProductsApiDataSourseIMPL(private val productsDataSourse: ProductsDataSourse):
+class ProductsApiDataSourseIMPL(private val productsDataSource: ProductsDataSourse):
     ProductsApiDataSourse {
-    override fun startMigration(context: Context) {
+
+    override fun startMigration (context: Context) {
+
         val call = ApiClient.instance?.api?.loadProducts()
         call?.enqueue(object: Callback<ArrayList<ProductsApiModel>> {
             override fun onResponse(
@@ -34,10 +36,12 @@ class ProductsApiDataSourseIMPL(private val productsDataSourse: ProductsDataSour
                             audit.price!!,
                             audit.salePrice!!,
                             audit.description.toString(),
-                            audit.deliveryTime.toString(),
+                            audit.deliveryTime.toString()
                         )
                     }?.let {
-                        productsDataSourse.insert(it)
+                        productsDataSource.insert(
+                            it
+                        )
                     }
                 }
                 Toast.makeText(context, "ЗАГРУЗКА", Toast.LENGTH_SHORT).show()

@@ -14,6 +14,9 @@ interface ProductsDao {
     @Query("SELECT * FROM product_data_table")
     fun getAllProduct(): LiveData<List<ProductsModel>>
 
+    @Query("SELECT * FROM product_data_table WHERE product_id IN (:idProduct)")
+    fun loadInfoProduct(idProduct:Int): LiveData<List<ProductsModel>>
+
     @Query("DELETE FROM product_data_table")
     suspend fun clear()
 }

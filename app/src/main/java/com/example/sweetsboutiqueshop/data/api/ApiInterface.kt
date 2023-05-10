@@ -1,14 +1,8 @@
 package com.example.sweetsboutiqueshop.data.api
 
-import com.example.sweetsboutiqueshop.data.models.CategoriesApiModel
-import com.example.sweetsboutiqueshop.data.models.CategoriesProductsApiModel
-import com.example.sweetsboutiqueshop.data.models.ProductsApiModel
-import okhttp3.ResponseBody
+import com.example.sweetsboutiqueshop.data.models.*
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
-import retrofit2.http.POST
 
 interface ApiInterface {
     @GET("loadCategories.php")
@@ -19,4 +13,10 @@ interface ApiInterface {
 
     @GET("loadCategoriesProducts.php")
     fun loadCatigoriesProducts(): Call<ArrayList<CategoriesProductsApiModel>>
+
+    @GET("loadImageProduct.php")
+    fun loadImageProducts(): Call<ArrayList<ImagesProductsApiModel>>
+
+    @GET("loadImage.php")
+    fun loadImage(): Call<ArrayList<ImagesApiModel>>
 }
