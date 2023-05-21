@@ -130,7 +130,7 @@ class CardProduct : BottomSheetDialogFragment(), View.OnClickListener {
                 } else {
                     //remove
                     countToBasket = 0
-                    binding?.addToBasketCardProduct?.setImageResource(R.drawable.basket)
+                    binding?.addToBasketCardProduct?.setImageResource(R.drawable.basket_small)
                 }
             })
         }
