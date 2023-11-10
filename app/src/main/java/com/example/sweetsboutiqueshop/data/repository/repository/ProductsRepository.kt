@@ -19,6 +19,10 @@ class ProductsRepository(
         return productsDataSource.loadInfoProduct(idProduct)
     }
 
+    override fun loadProductsFromCategory(ids:List<Int>): LiveData<List<ProductsModel>> {
+        return productsDataSource.loadProductsFromCategory(ids)
+    }
+
     override suspend fun startMigration(context: Context) {
         productsDataSource.clear()
         productsApiDataSource.startMigration(context)

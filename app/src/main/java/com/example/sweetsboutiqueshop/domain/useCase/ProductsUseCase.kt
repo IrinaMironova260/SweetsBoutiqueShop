@@ -15,6 +15,10 @@ class ProductsUseCase (private val call: ProductsCall) {
         return call.loadInfoProduct(idProduct)
     }
 
+    fun loadProductsFromCategory(ids:List<Int>): LiveData<List<ProductsModel>> {
+        return call.loadProductsFromCategory(ids)
+    }
+
     suspend fun startMigration(context: Context){
         call.startMigration(context)
     }

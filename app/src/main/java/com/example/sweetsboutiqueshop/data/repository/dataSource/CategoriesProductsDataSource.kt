@@ -5,6 +5,6 @@ import com.example.sweetsboutiqueshop.data.models.CategoriesProductsModel
 
 interface CategoriesProductsDataSource {
     fun insert(model: CategoriesProductsModel)
-    fun loadCategoriesProduct(idProduct: Int): LiveData<List<CategoriesProductsModel>>
+    fun loadProductsCategory(idProduct: Int): LiveData<List<CategoriesProductsModel>>
     suspend fun clear()
 }

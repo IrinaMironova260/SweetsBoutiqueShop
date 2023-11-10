@@ -23,16 +23,72 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sectionEnterName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="@string/enter_name"
+            app:boxBackgroundColor="@android:color/black"
+            app:boxStrokeColor="@android:color/black"
+            app:boxStrokeWidthFocused="4dp"
+            app:endIconMode="custom"
+            app:endIconTint="@color/grey"
+            app:helperText="@string/enter_name"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/pink"
+            app:hintTextColor="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@id/headerBasket"
+            app:startIconTint="@android:color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/enterName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@android:color/black"
+                app:backgroundTint="@color/pink" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sectionEnterTel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="@string/enter_tel"
+            app:boxBackgroundColor="@android:color/black"
+            app:boxStrokeColor="@android:color/black"
+            app:boxStrokeWidthFocused="4dp"
+            app:endIconMode="custom"
+            app:endIconTint="@android:color/holo_red_light"
+            app:helperText="@string/enter_tel"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/pink"
+            app:hintTextColor="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@id/sectionEnterName"
+            app:startIconTint="@android:color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/enterPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textColor="@android:color/black"
+                app:backgroundTint="@color/pink" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/clearBasket"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/grey"
+            android:background="@color/black"
             android:text="@string/clearBasket"
             android:textAllCaps="true"
             android:textColor="@color/white"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/headerBasket" />
+            app:layout_constraintTop_toBottomOf="@id/sectionEnterTel" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerProductsBasket"
@@ -46,11 +102,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="@color/pink"
+            android:background="@color/black"
             android:text="@string/order"
             android:textAllCaps="true"
             android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/recyclerProductsBasket" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/messageEmptyBasket"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
+            android:text="@string/empty_basket"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

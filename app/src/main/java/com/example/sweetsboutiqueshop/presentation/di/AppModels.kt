@@ -1,7 +1,7 @@
 package com.example.sweetsboutiqueshop.presentation.di
 
 import androidx.room.Room
-import com.example.sweetsboutiqueshop.data.localDB.DBFive
+import com.example.sweetsboutiqueshop.data.localDB.DBnew
 import com.example.sweetsboutiqueshop.data.repository.dataSource.*
 import com.example.sweetsboutiqueshop.data.repository.dataSourceIMPL.*
 import com.example.sweetsboutiqueshop.data.repository.repository.*
@@ -18,12 +18,12 @@ val moduleCategories = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DBFive::class.java,
-            "localDBFiveCat"
+            DBnew::class.java,
+            "localDBnewCat"
         ).build()
     }
 
-    single { get<DBFive>().categoriesDao }
+    single { get<DBnew>().categoriesDao }
 
     single<CategoriesDataSourse> {
         CategoriesDataSourseIMPL(get())
@@ -45,12 +45,12 @@ val moduleProducts = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DBFive::class.java,
-            "localDBFiveProd"
+            DBnew::class.java,
+            "localDBnewProd"
         ).build()
     }
 
-    single { get<DBFive>().priductsDao }
+    single { get<DBnew>().productsDao}
 
 
     single<ProductsDataSourse> {
@@ -72,12 +72,12 @@ val moduleCategoriesProducts = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DBFive::class.java,
-            "localDBFiveProd"
+            DBnew::class.java,
+            "localDBnewProd"
         ).build()
     }
 
-    single { get<DBFive>().categoriesProductsDao}
+    single { get<DBnew>().categoriesProductsDao}
 
 
     single<CategoriesProductsDataSource> {
@@ -99,12 +99,12 @@ val moduleImageProducts = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DBFive::class.java,
-            "localDBFiveImageProduct"
+            DBnew::class.java,
+            "localDBnewImageProduct"
         ).build()
     }
 
-    single { get<DBFive>().imagesProductsDao}
+    single { get<DBnew>().imagesProductsDao}
 
     single<ImageProductDataSource> {
         ImageProductDataSourceIMPL(get())
@@ -127,12 +127,12 @@ val moduleImages = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DBFive::class.java,
-            "localDBFiveImage"
+            DBnew::class.java,
+            "localDBnewImage"
         ).build()
     }
 
-    single { get<DBFive>().imagesDao}
+    single { get<DBnew>().imagesDao}
 
     single<ImagesDataSouce> {
         ImagesDataSouceIMPL(get())
@@ -155,12 +155,12 @@ val moduleBasket = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DBFive::class.java,
-            "localDBFiveBasket"
+            DBnew::class.java,
+            "localDBnewBasket"
         ).build()
     }
 
-    single { get<DBFive>().basketDao}
+    single { get<DBnew>().basketDao}
 
     single<BasketDataSouce> {
         BasketDataSouceIMPL(get())
@@ -172,3 +172,46 @@ val moduleBasket = module {
 
 }
 
+val moduleFavorites = module {
+
+    single {
+        Room.databaseBuilder(
+            androidContext(),
+            DBnew::class.java,
+            "localDBnewBasket"
+        ).build()
+    }
+
+    single { get<DBnew>().favoritesDao}
+
+    single<FavoritesDataSouce> {
+        FavoritesDataSouceIMPL(get())
+    }
+
+    single<FavoritesCall> { FavoritesRepository (get()) }
+    single { FavoritesUseCase (get()) }
+    viewModel { FavoritesViewModel (get()) }
+
+}
+
+val moduleCompare = module {
+
+    single {
+        Room.databaseBuilder(
+            androidContext(),
+            DBnew::class.java,
+            "localDBnewBasket"
+        ).build()
+    }
+
+    single { get<DBnew>().compareDao}
+
+    single<CompareDataSouce> {
+        CompareDataSouceIMPL(get())
+    }
+
+    single<CompareCall> { CompareRepository (get()) }
+    single { CompareUseCase (get()) }
+    viewModel { CompareViewModel (get()) }
+
+}

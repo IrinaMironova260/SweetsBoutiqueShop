@@ -23,7 +23,9 @@ class App : Application() {
                 moduleCategoriesProducts,
                 moduleImageProducts,
                 moduleImages,
-                moduleBasket
+                moduleBasket,
+                moduleFavorites,
+                moduleCompare
             )
 
         }

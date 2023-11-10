@@ -4,13 +4,13 @@
     <item
         android:id="@+id/homeBottomMainMenu"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/home"
-        android:title="@string/menu_home" />
+        android:icon="@drawable/catalog"
+        android:title="@string/menu_catalog" />
 
     <item
-        android:id="@+id/coffeeBottomMainMenu"
+        android:id="@+id/basketBottomMainMenu"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/basket"
+        android:icon="@drawable/basket_small"
         android:title="@string/menu_basket" />
 
     <item
@@ -20,14 +20,15 @@
         android:title="@string/menu_favorites" />
 
     <item
-        android:id="@+id/accountBottomMainMenu"
+        android:id="@+id/compareBottomMainMenu"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/account"
-        android:title="@string/menu_account" />
+        android:icon="@drawable/compare"
+        android:title="@string/menu_compare" />
 
     <item
-        android:id="@+id/aboutBottomMainMenu"
+        android:id="@+id/accountBottomMainMenu"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/about"
-        android:title="@string/menu_about" />
+        android:icon="@drawable/account_circle_"
+        android:title="@string/menu_account" />
+
 </menu>

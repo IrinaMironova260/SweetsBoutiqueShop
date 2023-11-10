@@ -1,12 +1,10 @@
 package com.example.sweetsboutiqueshop.presentation
 
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import com.example.sweetsboutiqueshop.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.sweetsboutiqueshop.databinding.ActivityMainBinding
-import com.example.sweetsboutiqueshop.presentation.basket.Basket
-import com.example.sweetsboutiqueshop.presentation.catalog.Catalog
 import com.example.sweetsboutiqueshop.presentation.catalog.viewModels.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -29,24 +27,9 @@ class MainActivity : AppCompatActivity() {
         imagesProductsViewModel.migration(this)
         imagesViewModel.migration(this)
 
-        supportFragmentManager.beginTransaction().replace(R.id.mainContent, Catalog()).commit()
+        val screenApp = Intent(this, ScreenApp::class.java)
+        startActivity(screenApp)
 
-        binding?.bottomNav?.setOnItemSelectedListener { item ->
-            when(item.itemId) {
-                R.id.homeBottomMainMenu -> supportFragmentManager.beginTransaction()
-                    .replace(R.id.mainContent, Catalog()).commit()
-                R.id.coffeeBottomMainMenu -> supportFragmentManager.beginTransaction()
-                    .replace(R.id.mainContent, Basket()).commit()
-//              R.id.cardBottomMainMenu -> supportFragmentManager.beginTransaction()
-//                    .replace(R.id.mainContent, Card()).commit()
-//              R.id.accountBottomMainMenu -> supportFragmentManager.beginTransaction()
-//                    .replace(R.id.mainContent, Account()).commit()
-            }
-            return@setOnItemSelectedListener true
 
-        }
-        binding?.bottomNav?.selectedItemId = R.id.homeBottomMainMenu
     }
-
-
 }

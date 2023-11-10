@@ -24,6 +24,10 @@ class ProductsDataSourseIMPL(private val dao: ProductsDao): ProductsDataSourse {
         return dao.loadInfoProduct(idProduct)
     }
 
+    override fun loadProductsFromCategory(ids:List<Int>): LiveData<List<ProductsModel>> {
+        return dao.loadProductsFromCategory(ids)
+    }
+
     override suspend fun clear() {
         CoroutineScope(Dispatchers.IO).launch { dao.clear() }
     }

@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.sweetsboutiqueshop.data.models.CategoriesModel
 import com.example.sweetsboutiqueshop.data.models.ProductsModel
 import com.example.sweetsboutiqueshop.databinding.CatalogBinding
 import com.example.sweetsboutiqueshop.presentation.catalog.adapter.CategoryAdapter
 import com.example.sweetsboutiqueshop.presentation.catalog.adapter.ProductAdapter
+import com.example.sweetsboutiqueshop.presentation.catalog.viewModels.CategoriesProductsViewModel
 import com.example.sweetsboutiqueshop.presentation.catalog.viewModels.CategoriesViewModel
 import com.example.sweetsboutiqueshop.presentation.catalog.viewModels.ProductsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -23,6 +25,7 @@ class Catalog : Fragment() {
 
     val categoriesViewModel: CategoriesViewModel by viewModel()
     val productsViewModel: ProductsViewModel by viewModel()
+    val categoriesProductsViewModel: CategoriesProductsViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +44,8 @@ class Catalog : Fragment() {
     private fun initRecyclerCategories() {
         binding?.recyclerCategories?.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        categoryAdapter = CategoryAdapter()
+        categoryAdapter =
+            CategoryAdapter({ model: CategoriesModel -> loadProductsFromCategory(model) })
         binding?.recyclerCategories?.adapter = categoryAdapter
     }
 
@@ -67,12 +71,28 @@ class Catalog : Fragment() {
     }
 
     private fun startCardProduct(model: ProductsModel) {
-        var bundle = Bundle()
+        val bundle = Bundle()
         bundle.putInt("idProduct", model.id)
-        var card = CardProduct()
+        bundle.putString("mainImageProduct", model.mainImage)
+        bundle.putInt("priceProduct", model.price)
+        bundle.putInt("salePriceProduct", model.salePrice)
+        val card = CardProduct()
         card.arguments = bundle
         card.show(childFragmentManager, "cardProduct")
     }
 
+    private fun loadProductsFromCategory(model: CategoriesModel) {
+        categoriesProductsViewModel.loadProductsCategory(model.id)
+            .observe(viewLifecycleOwner, Observer {
+
+                val ids = it.map { it.productId }
+
+                productsViewModel.loadProductsFromCategory(ids)
+                    .observe(viewLifecycleOwner, Observer {
+                        productAdapter?.setList(it)
+                        productAdapter?.notifyDataSetChanged()
+                    })
+            })
+    }
 
 }

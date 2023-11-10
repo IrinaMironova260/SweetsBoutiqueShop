@@ -19,4 +19,9 @@ class ProductsViewModel(private val productsUseCase: ProductsUseCase) : ViewMode
     fun migration(context: Context) = viewModelScope.launch {
         productsUseCase.startMigration(context)
     }
+
+    fun loadProductsFromCategory (ids:List<Int>):
+            LiveData<List<ProductsModel>> {
+        return productsUseCase.loadProductsFromCategory(ids)
+    }
 }

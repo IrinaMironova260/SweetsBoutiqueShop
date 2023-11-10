@@ -11,8 +11,8 @@ import kotlinx.coroutines.launch
 class CategoriesProductsViewModel  (private val useCase: CategoriesProductsUseCase)
     : ViewModel() {
 
-    fun loadCategoryProducts(idProduct: Int): LiveData<List<CategoriesProductsModel>>{
-        return useCase.loadCategoriesProduct(idProduct)
+    fun loadProductsCategory(idProduct: Int): LiveData<List<CategoriesProductsModel>>{
+        return useCase.loadProductsCategory (idProduct)
     }
 
     fun migration(context: Context) = viewModelScope.launch {

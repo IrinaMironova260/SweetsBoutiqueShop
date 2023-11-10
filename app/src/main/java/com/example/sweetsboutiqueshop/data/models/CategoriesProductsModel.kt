@@ -8,6 +8,7 @@ import androidx.room.PrimaryKey
 class CategoriesProductsModel (
 
     @PrimaryKey(autoGenerate = false)
+
     @ColumnInfo(name = "category_product_id")
     var id:Int,
 

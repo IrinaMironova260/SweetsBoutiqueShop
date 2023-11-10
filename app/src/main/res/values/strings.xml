@@ -2,10 +2,11 @@
     <string name="app_name">Sweets Boutique Shop</string>
 
     <!--Меню-->
-    <string name="menu_home">Главная</string>
+    <string name="menu_catalog">Каталог</string>
     <string name="menu_basket">Корзина</string>
     <string name="menu_favorites">Избранное</string>
     <string name="menu_account">Профиль</string>
+    <string name="menu_compare">Сравнение</string>
     <string name="menu_about">О нас</string>
 
     <!--Каталог категорий товаров-->
@@ -20,12 +21,20 @@
 
     <!--Корзина-->
     <string name="basket">Корзина</string>
-    <string name="clearBasket">Очистить корзину </string>
     <string name="compare">Сравнение</string>
     <string name="currency"> рублей</string>
     <string name="headerTechnique">Описание товара </string>
     <string name="deliveryTime">Время доставки: </string>
     <string name="order">Сделать заказ</string>
+    <string name="enter_tel">Введите свой номер телефона: </string>
+    <string name="enter_name">Введите свое имя: </string>
 
+    <string name="clearBasket">Очистить корзину </string>
+    <string name="clearFavorites">Очистить Избранное </string>
+    <string name="clearCompare">Очистить Сравнение </string>
+
+    <string name="empty_basket">Вы ничего не добавили в корзину</string>
+    <string name="empty_favorites">Вы ничего не добавили в избранное</string>
+    <string name="empty_compare">Вы ничего не добавили в сравнение</string>
 
 </resources>

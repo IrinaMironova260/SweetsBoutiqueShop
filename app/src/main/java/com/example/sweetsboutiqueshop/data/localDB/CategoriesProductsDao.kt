@@ -12,8 +12,8 @@ interface CategoriesProductsDao {
     @Insert
     suspend fun insert(model: CategoriesProductsModel)
 
-    @Query("SELECT * FROM category_product_data_table WHERE category_product_id_product=:idProduct")
-    fun loadCategoriesProduct(idProduct:Int): LiveData<List<CategoriesProductsModel>>
+    @Query("SELECT * FROM category_product_data_table WHERE category_product_id_category=:idCategory")
+    fun loadProductsCategory(idCategory:Int): LiveData<List<CategoriesProductsModel>>
 
     @Query("DELETE FROM category_product_data_table")
     suspend fun clear()

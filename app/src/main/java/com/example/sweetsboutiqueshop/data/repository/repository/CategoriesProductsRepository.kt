@@ -8,17 +8,17 @@ import com.example.sweetsboutiqueshop.data.repository.dataSource.CategoriesProdu
 import com.example.sweetsboutiqueshop.domain.repository.CategoriesProductsCall
 
 class CategoriesProductsRepository(
-    private val categoriesProductsApiDataSourse: CategoriesProductsApiDataSource,
-    private val categoriesProductsDataSourse: CategoriesProductsDataSource
+    private val productsCategoryApiDataSourse: CategoriesProductsApiDataSource,
+    private val productsCategoryDataSourse: CategoriesProductsDataSource
 ) : CategoriesProductsCall {
 
-    override fun loadCategoriesProducts(idProduct:Int): LiveData<List<CategoriesProductsModel>> {
-        return categoriesProductsDataSourse.loadCategoriesProduct(idProduct)
+    override fun loadProductsCategory(idProduct:Int): LiveData<List<CategoriesProductsModel>> {
+        return productsCategoryDataSourse.loadProductsCategory(idProduct)
     }
 
     override suspend fun startMigration(context: Context) {
-        categoriesProductsDataSourse.clear()
-        categoriesProductsApiDataSourse.startMigration(context)
+        productsCategoryDataSourse.clear()
+        productsCategoryApiDataSourse.startMigration(context)
     }
 
 }
