@@ -43,7 +43,7 @@ class Catalog : Fragment() {
 
     private fun initRecyclerCategories() {
         binding?.recyclerCategories?.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         categoryAdapter =
             CategoryAdapter({ model: CategoriesModel -> loadProductsFromCategory(model) })
         binding?.recyclerCategories?.adapter = categoryAdapter
@@ -51,7 +51,7 @@ class Catalog : Fragment() {
 
     private fun initRecyclerProducts() {
         binding?.recyclerProducts?.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         productAdapter = ProductAdapter({ model: ProductsModel -> startCardProduct(model) })
         binding?.recyclerProducts?.adapter = productAdapter
     }
@@ -76,6 +76,8 @@ class Catalog : Fragment() {
         bundle.putString("mainImageProduct", model.mainImage)
         bundle.putInt("priceProduct", model.price)
         bundle.putInt("salePriceProduct", model.salePrice)
+        bundle.putString("description", model.description)
+        bundle.putString("deliveryTime", model.deliveryTime)
         val card = CardProduct()
         card.arguments = bundle
         card.show(childFragmentManager, "cardProduct")

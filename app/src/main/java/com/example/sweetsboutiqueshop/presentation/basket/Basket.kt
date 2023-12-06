@@ -63,11 +63,9 @@ class Basket : Fragment() {
     private fun initRecyclerProductsBasket() {
         binding?.recyclerProductsBasket?.layoutManager = LinearLayoutManager(context)
         adapter = BasketAdapter({ model: BasketModel,
-                                  tag: String ->
-            editCount(model, tag)
+                                  tag: String -> editCount(model, tag)
         },
-            { model: BasketModel ->
-                deleteProduct(model)
+            { model: BasketModel ->  deleteProduct(model)
             })
         binding?.recyclerProductsBasket?.adapter = adapter
 

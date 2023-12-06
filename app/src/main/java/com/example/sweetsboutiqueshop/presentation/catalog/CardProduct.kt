@@ -60,7 +60,6 @@ class CardProduct : BottomSheetDialogFragment(), View.OnClickListener {
 
         binding?.actionBasketCardProduct?.setOnClickListener(this)
         binding?.addToFavoritesCardProduct?.setOnClickListener(this)
-
         binding?.addToCompareCardProduct?.setOnClickListener(this)
 
         if (countToFavorites > 0) {
@@ -85,17 +84,19 @@ class CardProduct : BottomSheetDialogFragment(), View.OnClickListener {
 
             binding?.nameProductCardProduct?.text = it.last().name
             binding?.descriptionProductCardProduct?.text = it.last().description
-            binding?.priceProductCardProduct?.text =
-                it.last().price.toString() + getString(R.string.currency)
-            binding?.salePriceProductCardProduct?.text = it.last().salePrice.toString() + getString(R.string.currency)
-            if (it.last().salePrice > 0) {
+            binding?.priceProductCardProduct?.text = getString(R.string.price) + it.last().price.toString() + getString(R.string.currency)
+
+            if(it.last().salePrice != 0){
+                binding?.salePriceProductCardProduct?.text =  getString(R.string.salePrice) + it.last().salePrice.toString() + getString(R.string.currency)
+                binding?.priceProductCardProduct?.text =  " "
                 activePrice = it.last().salePrice
             } else {
+                binding?.priceProductCardProduct?.text =  getString(R.string.price) + it.last().price.toString() + getString(R.string.currency)
+                binding?.salePriceProductCardProduct?.text = " "
                 activePrice = it.last().price
             }
 
             mainImage = it.last().mainImage
-
             binding?.deliveryTime?.text = getString(R.string.deliveryTime) + it.last().deliveryTime
         })
     }
@@ -129,21 +130,18 @@ class CardProduct : BottomSheetDialogFragment(), View.OnClickListener {
 
     override fun onClick(view: View) {
         when (view.id) {
+
             R.id.actionBasketCardProduct -> {
-                if (countToBasket > 0) {
+                if (countToBasket>0) {
                     basketViewModel.deleteById(idProduct!!)
                     conditionAddToBasket()
-
-                } else {
+                }  else {
                     binding?.nameProductCardProduct?.text?.toString()
-                        ?.let { it1 ->
-                            activePrice?.let { it2 ->
-                                basketViewModel.startInsert(
-                                    it1,
-                                    it2, 1, idProduct!!
-                                )
-                            }
-                        }
+                        ?.let { it1 -> activePrice?.let { it2 ->
+                            basketViewModel.startInsert(it1,
+                                it2,1, idProduct!!
+                            )
+                        } }
                     conditionAddToBasket()
                 }
             }
@@ -157,6 +155,8 @@ class CardProduct : BottomSheetDialogFragment(), View.OnClickListener {
                         arguments?.getString("mainImageProduct").toString(),
                         arguments?.getInt("priceProduct") ?: return,
                         arguments?.getInt("salePriceProduct") ?: return,
+                        arguments?.getString("description").toString(),
+                        arguments?.getString("deliveryTime").toString(),
                         idProduct!!
                     )
                 }
@@ -198,7 +198,6 @@ class CardProduct : BottomSheetDialogFragment(), View.OnClickListener {
     private fun conditionAddToFavorites() {
         idProduct?.let {
             favoriteViewModel.loadProductFromFavorites(it).observe(viewLifecycleOwner, Observer {
-                //binding?.nameProductCardProduct?.text = it.count().toString()
                 if (it.count() > 0) {
                     countToFavorites = it.count()
                     binding?.addToFavoritesCardProduct?.setImageResource(R.drawable.favorites)
@@ -215,9 +214,10 @@ class CardProduct : BottomSheetDialogFragment(), View.OnClickListener {
             compareViewModel.loadProductFromCompare(it).observe(viewLifecycleOwner, Observer {
                 if (it.count() > 0) {
                     countToCompare = it.count()
-                    // binding?.nameProductCardProduct?.text=countToCompare.toString()
+                    binding?.addToCompareCardProduct?.setImageResource(R.drawable.compare_small)
                 } else {
                     countToCompare = 0
+                    binding?.addToCompareCardProduct?.setImageResource(R.drawable.compare)
                 }
             })
         }

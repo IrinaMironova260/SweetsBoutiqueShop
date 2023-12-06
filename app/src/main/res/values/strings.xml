@@ -21,20 +21,22 @@
 
     <!--Корзина-->
     <string name="basket">Корзина</string>
+    <string name="more">Подробнее</string>
     <string name="compare">Сравнение</string>
-    <string name="currency"> рублей</string>
-    <string name="headerTechnique">Описание товара </string>
+    <string name="currency"> рублей.</string>
+    <string name="header">Описание товара: </string>
     <string name="deliveryTime">Время доставки: </string>
     <string name="order">Сделать заказ</string>
     <string name="enter_tel">Введите свой номер телефона: </string>
     <string name="enter_name">Введите свое имя: </string>
-
     <string name="clearBasket">Очистить корзину </string>
     <string name="clearFavorites">Очистить Избранное </string>
     <string name="clearCompare">Очистить Сравнение </string>
-
     <string name="empty_basket">Вы ничего не добавили в корзину</string>
     <string name="empty_favorites">Вы ничего не добавили в избранное</string>
     <string name="empty_compare">Вы ничего не добавили в сравнение</string>
+    <string name="seeProduct">Посмотреть товар</string>
+    <string name="price">Цена товара: </string>
+    <string name="salePrice">Цена со скидкой: </string>
 
 </resources>

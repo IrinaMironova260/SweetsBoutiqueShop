@@ -40,22 +40,33 @@ class ProductAdapter(private var startCardProduct: (ProductsModel) -> Unit) :
         private var context: Context? = null
 
         fun bind(
-            model: ProductsModel, startCardProduct: (ProductsModel) -> Unit
+            model: ProductsModel,
+            startCardProduct: (ProductsModel) -> Unit
         ) {
 
             val getImage = model.mainImage
             Picasso.get().load(getImage).into(binding.imageProduct)
+
             binding.nameProduct.text = model.name
 
             val price = model.price
-            binding.priceProduct.text = price.toString()
+            val salePrice = model.salePrice
 
-            if (model.salePrice != 0) {
-                val salePrice = model.salePrice
-                binding.salePriceProduct.text = "$salePrice Р."
+
+            if (model.salePrice == 0) {
+                binding.priceProduct.text = "Стоимость $price рублей."
             } else {
-                binding.salePriceProduct.text = ""
+                binding.priceProduct.text = "Цена со скидкой: $salePrice руб."
             }
+
+//            if (model.salePrice != 0) {
+//                binding.priceProduct.text = "Цена со скидкой: $salePrice руб."
+//            } else {
+//                binding.salePriceProduct.text = ""
+//            }
+
+            val delivery = model.deliveryTime
+            binding.deliveryTimeProduct.text = "Доставка через $delivery"
 
             binding.goToCardProdPrev.setOnClickListener(View.OnClickListener {
                 startCardProduct(model)

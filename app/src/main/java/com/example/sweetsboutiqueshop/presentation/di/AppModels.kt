@@ -1,7 +1,7 @@
 package com.example.sweetsboutiqueshop.presentation.di
 
 import androidx.room.Room
-import com.example.sweetsboutiqueshop.data.localDB.DBnew
+import com.example.sweetsboutiqueshop.data.localDB.DataBase
 import com.example.sweetsboutiqueshop.data.repository.dataSource.*
 import com.example.sweetsboutiqueshop.data.repository.dataSourceIMPL.*
 import com.example.sweetsboutiqueshop.data.repository.repository.*
@@ -18,12 +18,12 @@ val moduleCategories = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DBnew::class.java,
-            "localDBnewCat"
+            DataBase::class.java,
+            "DataBaseCat"
         ).build()
     }
 
-    single { get<DBnew>().categoriesDao }
+    single { get<DataBase>().categoriesDao }
 
     single<CategoriesDataSourse> {
         CategoriesDataSourseIMPL(get())
@@ -45,12 +45,12 @@ val moduleProducts = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DBnew::class.java,
-            "localDBnewProd"
+            DataBase::class.java,
+            "DataBaseProd"
         ).build()
     }
 
-    single { get<DBnew>().productsDao}
+    single { get<DataBase>().productsDao}
 
 
     single<ProductsDataSourse> {
@@ -72,12 +72,12 @@ val moduleCategoriesProducts = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DBnew::class.java,
-            "localDBnewProd"
+            DataBase::class.java,
+            "DataBaseCatProd"
         ).build()
     }
 
-    single { get<DBnew>().categoriesProductsDao}
+    single { get<DataBase>().categoriesProductsDao}
 
 
     single<CategoriesProductsDataSource> {
@@ -99,12 +99,12 @@ val moduleImageProducts = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DBnew::class.java,
-            "localDBnewImageProduct"
+            DataBase::class.java,
+            "DataBaseImageProduct"
         ).build()
     }
 
-    single { get<DBnew>().imagesProductsDao}
+    single { get<DataBase>().imagesProductsDao}
 
     single<ImageProductDataSource> {
         ImageProductDataSourceIMPL(get())
@@ -127,12 +127,12 @@ val moduleImages = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DBnew::class.java,
-            "localDBnewImage"
+            DataBase::class.java,
+            "DataBaseImage"
         ).build()
     }
 
-    single { get<DBnew>().imagesDao}
+    single { get<DataBase>().imagesDao}
 
     single<ImagesDataSouce> {
         ImagesDataSouceIMPL(get())
@@ -141,11 +141,8 @@ val moduleImages = module {
     single<ImagesApiDataSouce> {
         ImagesApiDataSouceIMPL(get())
     }
-
     single<ImagesCall> { ImageRepository (get(), get()) }
-
     single { ImageUseCase (get()) }
-
     viewModel { ImagesViewModel (get()) }
 
 }
@@ -155,12 +152,12 @@ val moduleBasket = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DBnew::class.java,
-            "localDBnewBasket"
+            DataBase::class.java,
+            "DataBaseBasket"
         ).build()
     }
 
-    single { get<DBnew>().basketDao}
+    single { get<DataBase>().basketDao}
 
     single<BasketDataSouce> {
         BasketDataSouceIMPL(get())
@@ -177,12 +174,12 @@ val moduleFavorites = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DBnew::class.java,
-            "localDBnewBasket"
+            DataBase::class.java,
+            "DataBaseFavorites"
         ).build()
     }
 
-    single { get<DBnew>().favoritesDao}
+    single { get<DataBase>().favoritesDao}
 
     single<FavoritesDataSouce> {
         FavoritesDataSouceIMPL(get())
@@ -199,12 +196,12 @@ val moduleCompare = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DBnew::class.java,
-            "localDBnewBasket"
+            DataBase::class.java,
+            "DataBaseCompare"
         ).build()
     }
 
-    single { get<DBnew>().compareDao}
+    single { get<DataBase>().compareDao}
 
     single<CompareDataSouce> {
         CompareDataSouceIMPL(get())
