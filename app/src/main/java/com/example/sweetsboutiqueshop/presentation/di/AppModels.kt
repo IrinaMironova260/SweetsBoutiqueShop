@@ -1,7 +1,7 @@
 package com.example.sweetsboutiqueshop.presentation.di
 
 import androidx.room.Room
-import com.example.sweetsboutiqueshop.data.localDB.DataBase
+import com.example.sweetsboutiqueshop.data.localDB.NewDataBase
 import com.example.sweetsboutiqueshop.data.repository.dataSource.*
 import com.example.sweetsboutiqueshop.data.repository.dataSourceIMPL.*
 import com.example.sweetsboutiqueshop.data.repository.repository.*
@@ -18,12 +18,12 @@ val moduleCategories = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DataBase::class.java,
-            "DataBaseCat"
+            NewDataBase::class.java,
+            "NewDataBaseCat"
         ).build()
     }
 
-    single { get<DataBase>().categoriesDao }
+    single { get<NewDataBase>().categoriesDao }
 
     single<CategoriesDataSourse> {
         CategoriesDataSourseIMPL(get())
@@ -36,7 +36,6 @@ val moduleCategories = module {
     single<CategoryCall> { CategoriesRepository(get(), get()) }
     single { CategoriesUseCase(get()) }
     viewModel { CategoriesViewModel(get()) }
-
 }
 
 
@@ -45,13 +44,12 @@ val moduleProducts = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DataBase::class.java,
-            "DataBaseProd"
+            NewDataBase::class.java,
+            "NewDataBaseProd"
         ).build()
     }
 
-    single { get<DataBase>().productsDao}
-
+    single { get<NewDataBase>().productsDao}
 
     single<ProductsDataSourse> {
         ProductsDataSourseIMPL(get())
@@ -64,7 +62,6 @@ val moduleProducts = module {
     single<ProductsCall> { ProductsRepository(get(), get()) }
     single { ProductsUseCase(get()) }
     viewModel { ProductsViewModel(get()) }
-
 }
 
 val moduleCategoriesProducts = module {
@@ -72,13 +69,12 @@ val moduleCategoriesProducts = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DataBase::class.java,
-            "DataBaseCatProd"
+            NewDataBase::class.java,
+            "NewDataBaseCatProd"
         ).build()
     }
 
-    single { get<DataBase>().categoriesProductsDao}
-
+    single { get<NewDataBase>().categoriesProductsDao}
 
     single<CategoriesProductsDataSource> {
         CategoriesProductsDataSourceIMPL(get())
@@ -99,12 +95,12 @@ val moduleImageProducts = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DataBase::class.java,
-            "DataBaseImageProduct"
+            NewDataBase::class.java,
+            "NewDataBaseImageProduct"
         ).build()
     }
 
-    single { get<DataBase>().imagesProductsDao}
+    single { get<NewDataBase>().imagesProductsDao}
 
     single<ImageProductDataSource> {
         ImageProductDataSourceIMPL(get())
@@ -127,12 +123,12 @@ val moduleImages = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DataBase::class.java,
-            "DataBaseImage"
+            NewDataBase::class.java,
+            "NewDataBaseImage"
         ).build()
     }
 
-    single { get<DataBase>().imagesDao}
+    single { get<NewDataBase>().imagesDao}
 
     single<ImagesDataSouce> {
         ImagesDataSouceIMPL(get())
@@ -152,12 +148,12 @@ val moduleBasket = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DataBase::class.java,
-            "DataBaseBasket"
+            NewDataBase::class.java,
+            "NewDataBaseBasket"
         ).build()
     }
 
-    single { get<DataBase>().basketDao}
+    single { get<NewDataBase>().basketDao}
 
     single<BasketDataSouce> {
         BasketDataSouceIMPL(get())
@@ -174,12 +170,12 @@ val moduleFavorites = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DataBase::class.java,
-            "DataBaseFavorites"
+            NewDataBase::class.java,
+            "NewDataBaseFavorites"
         ).build()
     }
 
-    single { get<DataBase>().favoritesDao}
+    single { get<NewDataBase>().favoritesDao}
 
     single<FavoritesDataSouce> {
         FavoritesDataSouceIMPL(get())
@@ -196,19 +192,44 @@ val moduleCompare = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            DataBase::class.java,
-            "DataBaseCompare"
+            NewDataBase::class.java,
+            "NewDataBaseCompare"
         ).build()
     }
 
-    single { get<DataBase>().compareDao}
+    single { get<NewDataBase>().compareDao}
 
     single<CompareDataSouce> {
         CompareDataSouceIMPL(get())
     }
-
     single<CompareCall> { CompareRepository (get()) }
     single { CompareUseCase (get()) }
     viewModel { CompareViewModel (get()) }
+}
+
+
+val moduleAboutUs = module {
+
+    single {
+        Room.databaseBuilder(
+            androidContext(),
+            NewDataBase::class.java,
+            "NewDataBaseAboutUs"
+        ).build()
+    }
+
+    single { get<NewDataBase>().aboutDao}
+
+    single<AboutUsDataSource> {
+        AboutUsDataSourceIMPL(get())
+    }
+
+    single<AboutUsApiDataSource> {
+        AboutUsApiDataSourceIMPL(get())
+    }
+
+    single<AboutUsCall> { AboutUsRepository(get(), get()) }
+    single { AboutUsUseCase(get()) }
+    viewModel { AboutUsViewModel(get()) }
 
 }

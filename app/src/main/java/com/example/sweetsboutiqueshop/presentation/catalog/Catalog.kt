@@ -86,9 +86,7 @@ class Catalog : Fragment() {
     private fun loadProductsFromCategory(model: CategoriesModel) {
         categoriesProductsViewModel.loadProductsCategory(model.id)
             .observe(viewLifecycleOwner, Observer {
-
                 val ids = it.map { it.productId }
-
                 productsViewModel.loadProductsFromCategory(ids)
                     .observe(viewLifecycleOwner, Observer {
                         productAdapter?.setList(it)

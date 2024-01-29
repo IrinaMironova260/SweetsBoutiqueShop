@@ -25,7 +25,8 @@ class App : Application() {
                 moduleImages,
                 moduleBasket,
                 moduleFavorites,
-                moduleCompare
+                moduleCompare,
+                moduleAboutUs
             )
 
         }

@@ -24,6 +24,9 @@ interface ApiInterface {
     @GET("loadImage.php")
     fun loadImage(): Call<ArrayList<ImagesApiModel>>
 
+    @GET("loadAboutCompany.php")
+    fun loadAboutCompany(): Call<ArrayList<AboutUsApiModel>>
+
     @FormUrlEncoded
     @POST("createOrder.php")
     fun createOrder(

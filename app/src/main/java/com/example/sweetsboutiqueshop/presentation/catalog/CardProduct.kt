@@ -84,6 +84,10 @@ class CardProduct : BottomSheetDialogFragment(), View.OnClickListener {
 
             binding?.nameProductCardProduct?.text = it.last().name
             binding?.descriptionProductCardProduct?.text = it.last().description
+
+            priceProduct = it.last().price
+            salePriceProduct = it.last().salePrice
+
             binding?.priceProductCardProduct?.text = getString(R.string.price) + it.last().price.toString() + getString(R.string.currency)
 
             if(it.last().salePrice != 0){

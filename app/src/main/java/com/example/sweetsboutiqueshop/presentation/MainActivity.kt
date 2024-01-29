@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     val categoriesProductsViewModel: CategoriesProductsViewModel by viewModel()
     val imagesProductsViewModel: ImageProductViewModel by viewModel()
     val imagesViewModel: ImagesViewModel by viewModel()
+    val aboutUsViewModel: AboutUsViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,10 +27,12 @@ class MainActivity : AppCompatActivity() {
         categoriesProductsViewModel.migration(this)
         imagesProductsViewModel.migration(this)
         imagesViewModel.migration(this)
+        aboutUsViewModel.migration(this)
 
         val screenApp = Intent(this, ScreenApp::class.java)
         startActivity(screenApp)
-
-
     }
+
+
+
 }
